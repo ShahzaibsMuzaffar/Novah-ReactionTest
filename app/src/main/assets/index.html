@@ -11,21 +11,56 @@
         
         <div id="home-screen" class="screen active">
             <h1 class="title">NOVAH<br>REACTION</h1>
-            <div class="stats-box">
-                <p>AVERAGE: <span id="avg-time">--</span> ms</p>
-                <p>BEST: <span id="best-time">--</span> ms</p>
-                <button id="reset-btn" class="neu-btn small-btn">Reset Data</button>
+            
+            <div class="controls-box">
+                <label for="difficulty">DIFFICULTY:</label>
+                <select id="difficulty" class="neu-input">
+                    <option value="easy">EASY (1-3s)</option>
+                    <option value="medium" selected>MEDIUM (2-5s)</option>
+                    <option value="hard">HARD (3-8s)</option>
+                </select>
             </div>
+
+            <div class="action-row">
+                <button id="show-stats-btn" class="neu-btn half-btn">📊 STATS</button>
+                <button id="show-history-btn" class="neu-btn half-btn">🕒 HISTORY</button>
+            </div>
+
             <button id="start-btn" class="neu-btn big-btn">START TEST</button>
         </div>
 
-        <div id="countdown-screen" class="screen">
-            <div class="rules-box">
-                <h2>HOW TO PLAY</h2>
-                <p>Wait for the screen to turn GREEN.</p>
-                <p>Tap as fast as you can!</p>
-                <p>Do NOT tap on RED.</p>
+        <div id="stats-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>FULL STATS</h2>
+                    <button class="close-btn" id="close-stats">X</button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card green"><div class="icon">⚡</div><div class="value" id="s-best">-</div><div class="label">BEST TIME</div></div>
+                    <div class="stat-card red"><div class="icon">🐢</div><div class="value" id="s-worst">-</div><div class="label">WORST</div></div>
+                    <div class="stat-card blue"><div class="icon">📈</div><div class="value" id="s-avg">-</div><div class="label">AVERAGE</div></div>
+                    <div class="stat-card purple"><div class="icon">📊</div><div class="value" id="s-last5">-</div><div class="label">LAST 5 AVG</div></div>
+                    <div class="stat-card orange"><div class="icon">🔥</div><div class="value" id="s-streak">0</div><div class="label">STREAK</div></div>
+                    <div class="stat-card yellow"><div class="icon">🏆</div><div class="value" id="s-best-streak">0</div><div class="label">BEST STREAK</div></div>
+                    <div class="stat-card dark-blue"><div class="icon">🎮</div><div class="value" id="s-total">0</div><div class="label">TOTAL GAMES</div></div>
+                    <div class="stat-card dark-red"><div class="icon">❌</div><div class="value" id="s-early">0</div><div class="label">TOO EARLY</div></div>
+                </div>
+                <button id="reset-btn" class="neu-btn small-btn mt-10">NUKE DATA</button>
             </div>
+        </div>
+
+        <div id="history-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>MATCH HISTORY</h2>
+                    <button class="close-btn" id="close-history">X</button>
+                </div>
+                <div id="history-list" class="scroll-list">
+                    </div>
+            </div>
+        </div>
+
+        <div id="countdown-screen" class="screen">
             <h1 id="countdown-text">3</h1>
         </div>
 
@@ -37,8 +72,10 @@
             <div class="result-box">
                 <h1 id="result-message">Result</h1>
                 <h2 id="reaction-time-display"></h2>
+                <div id="rank-badge" class="rank-badge">Rank</div>
             </div>
             <button id="play-again-btn" class="neu-btn big-btn">PLAY AGAIN</button>
+            <button id="home-btn" class="neu-btn small-btn mt-10">MAIN MENU</button>
         </div>
 
     </div>
