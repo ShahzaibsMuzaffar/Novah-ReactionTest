@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.novah.reactiontest">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:roundIcon="@drawable/ic_launcher"
         android:label="Novah ReactionTest"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
