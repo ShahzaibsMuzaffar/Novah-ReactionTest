@@ -1,47 +1,62 @@
-/* Base Neubrutalism Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; font-weight: 900; user-select: none; }
 body, html { width: 100%; height: 100%; background-color: #f4f4f0; overflow: hidden; }
 #game-container { width: 100%; height: 100%; position: relative; }
 
-/* Screen Management */
 .screen { display: none; width: 100%; height: 100%; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; padding: 20px; }
 .screen.active { display: flex; }
 
-/* Neubrutalist Typography & Boxes */
-.title { font-size: 3.5rem; text-align: center; margin-bottom: 2rem; color: #000; text-shadow: 3px 3px 0px #fff, 6px 6px 0px #000; border: 5px solid #000; padding: 15px 20px; background: #ffde59; transform: rotate(-3deg); box-shadow: 8px 8px 0px #000; }
-.stats-box { border: 4px solid #000; padding: 20px; background: #fff; box-shadow: 6px 6px 0px #000; margin-bottom: 2rem; text-align: center; width: 100%; max-width: 300px; }
-.stats-box p { font-size: 1.2rem; margin-bottom: 10px; }
+.title { font-size: 3.5rem; text-align: center; margin-bottom: 1.5rem; color: #000; text-shadow: 3px 3px 0px #fff, 6px 6px 0px #000; border: 5px solid #000; padding: 15px 20px; background: #ffde59; transform: rotate(-3deg); box-shadow: 8px 8px 0px #000; }
 
-/* Neubrutalist Buttons */
+.controls-box { border: 4px solid #000; padding: 15px; background: #fff; box-shadow: 6px 6px 0px #000; margin-bottom: 1rem; width: 100%; max-width: 320px; text-align: center; }
+.neu-input { width: 100%; border: 3px solid #000; padding: 10px; font-size: 1.2rem; background: #eee; cursor: pointer; outline: none; margin-top: 5px; }
+
+.action-row { display: flex; gap: 10px; width: 100%; max-width: 320px; margin-bottom: 2rem; }
+.half-btn { flex: 1; font-size: 1rem; padding: 10px; background: #fff; }
+
 .neu-btn { border: 4px solid #000; color: #000; font-size: 1.5rem; padding: 15px 30px; cursor: pointer; box-shadow: 6px 6px 0px #000; transition: all 0.1s ease; text-transform: uppercase; background: #00e676; }
 .neu-btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0px #000; }
-.small-btn { font-size: 1rem; padding: 8px 15px; background: #ff914d; margin-top: 10px; width: 100%; }
+.small-btn { font-size: 1.2rem; padding: 10px 15px; background: #ff914d; width: 100%; }
+.mt-10 { margin-top: 15px; }
 
-/* Rules Box */
-.rules-box { border: 4px solid #000; background: #fff; padding: 25px; box-shadow: 8px 8px 0px #000; margin-bottom: 40px; text-align: center; width: 100%; max-width: 350px; }
-.rules-box h2 { font-size: 2rem; margin-bottom: 15px; text-decoration: underline; text-decoration-thickness: 4px; }
-.rules-box p { font-size: 1.1rem; margin-bottom: 10px; }
+/* Modals */
+.modal { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+.modal.active { display: flex; }
+.modal-content { background: #f4f4f0; border: 5px solid #000; width: 100%; max-width: 400px; max-height: 90%; display: flex; flex-direction: column; padding: 15px; box-shadow: 10px 10px 0px #000; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid #000; padding-bottom: 10px; margin-bottom: 15px; }
+.close-btn { background: #fff; border: 3px solid #000; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; box-shadow: 3px 3px 0px #000; }
+.close-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }
+
+/* Dashboard Grid */
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; overflow-y: auto; padding-right: 5px; }
+.stat-card { border: 3px solid #000; padding: 10px; background: #fff; display: flex; flex-direction: column; box-shadow: 3px 3px 0px #000; }
+.stat-card .icon { font-size: 1.5rem; margin-bottom: 5px; }
+.stat-card .value { font-size: 1.5rem; margin-bottom: 5px; }
+.stat-card .label { font-size: 0.8rem; color: #555; }
+
+/* Grid Colors based on your image */
+.stat-card.green { border-color: #2db355; color: #2db355; }
+.stat-card.red { border-color: #ff4747; color: #ff4747; }
+.stat-card.blue { border-color: #2b78e4; color: #2b78e4; }
+.stat-card.purple { border-color: #8c38ff; color: #8c38ff; }
+.stat-card.orange { border-color: #ff914d; color: #ff914d; }
+.stat-card.yellow { border-color: #e6b800; color: #e6b800; }
+.stat-card.dark-blue { border-color: #435b71; color: #435b71; }
+.stat-card.dark-red { border-color: #c92a2a; color: #c92a2a; }
+
+/* History List */
+.scroll-list { overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.history-item { border: 3px solid #000; padding: 10px; background: #fff; display: flex; justify-content: space-between; align-items: center; }
+.history-item .time { font-size: 1.4rem; }
+.history-item .details { text-align: right; font-size: 0.8rem; }
+
+/* Game States */
 #countdown-text { font-size: 8rem; text-shadow: 6px 6px 0px #000; color: #fff; -webkit-text-stroke: 3px black; }
-
-/* --- CLAYMORPHISM STATES --- */
-#play-screen { transition: background-color 0.1s; }
-
-/* Claymorphism Red Paste */
-.clay-red {
-    background-color: #ff4747 !important;
-    /* Soft, thick inner shadows give the 3D clay look */
-    box-shadow: inset 30px 30px 60px #cc3939, inset -30px -30px 60px #ff5555;
-}
-
-/* Claymorphism Green Paste */
-.clay-green {
-    background-color: #38e06a !important;
-    box-shadow: inset 30px 30px 60px #2db355, inset -30px -30px 60px #43ff7f;
-}
-
+.clay-red { background-color: #ff4747 !important; box-shadow: inset 30px 30px 60px #cc3939, inset -30px -30px 60px #ff5555; }
+.clay-green { background-color: #38e06a !important; box-shadow: inset 30px 30px 60px #2db355, inset -30px -30px 60px #43ff7f; }
 #tap-area { width: 100%; height: 100%; position: absolute; z-index: 10; cursor: pointer; }
 
-/* Results */
+/* Result */
 .result-box { border: 5px solid #000; background: #fff; padding: 30px; box-shadow: 8px 8px 0px #000; text-align: center; margin-bottom: 30px; transform: rotate(2deg); width: 100%; max-width: 350px; }
-#result-message { font-size: 2.5rem; margin-bottom: 15px; }
-#reaction-time-display { font-size: 1.8rem; color: #555; }
+#result-message { font-size: 2.5rem; margin-bottom: 10px; }
+#reaction-time-display { font-size: 1.8rem; color: #555; margin-bottom: 15px; }
+.rank-badge { display: inline-block; padding: 5px 15px; border: 3px solid #000; background: #ffde59; font-size: 1.2rem; transform: rotate(-2deg); }
